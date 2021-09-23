@@ -1,0 +1,4 @@
+<resources>
+   <string name="app_name">GDPR Consent Test</string>
+   <string name="status_1_s">Status: %1$s</string>
+</resources>
