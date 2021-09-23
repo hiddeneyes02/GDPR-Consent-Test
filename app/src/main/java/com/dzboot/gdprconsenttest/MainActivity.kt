@@ -107,10 +107,22 @@ class MainActivity : AppCompatActivity() {
         bannerAdLayout.addView(adView)
         adView.adUnitId = "ca-app-pub-3940256099942544/6300978111"
         adView.adSize = AdSize.getCurrentOrientationAnchoredAdaptiveBannerAdSize(this, adWidth)
+        adView.adListener = object : AdListener() {
+            override fun onAdLoaded() {
+                super.onAdLoaded()
+                statusTV.append("\nAd loaded successfully")
+            }
+
+            override fun onAdFailedToLoad(p0: LoadAdError) {
+                super.onAdFailedToLoad(p0)
+                statusTV.append("\nAd failed to load ${p0.message}")
+            }
+        }
         adView.loadAd(AdRequest.Builder().build())
     }
 
     companion object {
+        //change this to your device if you are not using an emulator
         private const val TEST_DEVICE_ID = "F40D8D0517577C9DFC3EDD5973A08B2B"
     }
 }
